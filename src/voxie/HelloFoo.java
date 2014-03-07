@@ -25,7 +25,7 @@
  * @version     ##library.prettyVersion## (##library.version##)
  */
 
-package template.library;
+package voxie;
 
 
 import processing.core.*;
@@ -42,7 +42,7 @@ import processing.core.*;
  *
  */
 
-public class HelloLibrary {
+public class HelloFoo {
 	
 	// myParent is a reference to the parent sketch
 	PApplet myParent;
@@ -59,7 +59,7 @@ public class HelloLibrary {
 	 * @example Hello
 	 * @param theParent
 	 */
-	public HelloLibrary(PApplet theParent) {
+	public HelloFoo(PApplet theParent) {
 		myParent = theParent;
 		welcome();
 	}
