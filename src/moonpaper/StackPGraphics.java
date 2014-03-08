@@ -1,4 +1,4 @@
-package voxie;
+package moonpaper;
 
 import processing.core.*;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class StackPGraphics {
 		pgList = new ArrayList<PGraphics>();
 		dimensionsList = new ArrayList<PVector>();
 	}
-	
+
 	StackPGraphics() {
 		pgList = new ArrayList<PGraphics>();
 		dimensionsList = new ArrayList<PVector>();
@@ -27,18 +27,10 @@ public class StackPGraphics {
 		return push(pApplet.createGraphics(w, h));
 	}
 
-/*
-	public PGraphics push(int w, int h, String renderer) {
-		PGraphics pg = pApplet.createGraphics(w, h, renderer);
-		return push(pg);
-	}
-*/
-	
-	public PGraphics pushCopy() {
-		PGraphics pgCopy = pApplet.createGraphics(pApplet.width, pApplet.height);
-		pgCopy.copy(pApplet.g, 0, 0, pApplet.g.width, pApplet.g.height, 0, 0, pApplet.g.width, pApplet.g.height);
-		return push(pgCopy);
-	}
+	/*
+	 * public PGraphics push(int w, int h, String renderer) { PGraphics pg =
+	 * pApplet.createGraphics(w, h, renderer); return push(pg); }
+	 */
 
 	public PGraphics push(PGraphics pg) {
 		pgList.add(pApplet.g);
@@ -50,6 +42,20 @@ public class StackPGraphics {
 		return pApplet.g;
 	}
 
+	public PGraphics pushCopy() {
+		PGraphics pgCopy = pApplet
+				.createGraphics(pApplet.width, pApplet.height);
+		pgCopy.copy(pApplet.g, 0, 0, pApplet.g.width, pApplet.g.height, 0, 0,
+				pApplet.g.width, pApplet.g.height);
+		return push(pgCopy);
+	}
+
+	public PGraphics pushCopy(PGraphics pg) {
+		PGraphics pgCopy = pApplet.createGraphics(pg.width, pg.height);
+		pgCopy.copy(pg, 0, 0, pg.width, pg.height, 0, 0, pg.width, pg.height);
+		return push(pgCopy);
+	}
+
 	public PGraphics pop() {
 		pApplet.g.endDraw();
 		PGraphics pgReturn = pApplet.g;
@@ -59,6 +65,18 @@ public class StackPGraphics {
 		pApplet.height = (int) d.y;
 		return pgReturn;
 	}
-	
-//	public PGraphics pop(int blendMode) { }
+
+	public PGraphics pop(int blendMode) {
+		pApplet.g.endDraw();
+		PGraphics pgReturn = pApplet.g;
+		pApplet.g = pgList.remove(pgList.size() - 1);
+		PVector d = dimensionsList.remove(dimensionsList.size() - 1);
+		pApplet.width = (int) d.x;
+		pApplet.height = (int) d.y;
+		int blendTemp = PApplet.BLEND;
+		pApplet.blendMode(blendMode);
+		pApplet.image(pgReturn, 0, 0);
+		pApplet.blendMode(blendTemp);
+		return pgReturn;
+	}
 }

@@ -25,7 +25,7 @@
  * @version     ##library.prettyVersion## (##library.version##)
  */
 
-package voxie;
+package moonpaper;
 
 
 import processing.core.*;
