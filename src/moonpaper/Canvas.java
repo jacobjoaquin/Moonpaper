@@ -1,7 +1,8 @@
 package moonpaper;
 
 import java.util.ArrayList;
-import processing.core.*;
+import processing.core.PGraphics;
+import processing.core.PApplet;
 
 public class Canvas extends Displayable {
 	public PGraphics pg;
@@ -9,9 +10,9 @@ public class Canvas extends Displayable {
 	private PApplet parent;
 	private StackPGraphics stackPG;
 	
-	public Canvas(PApplet parent_, int w, int h) {
+	public Canvas(PApplet parent_, int width, int height) {
 		parent = parent_;
-		pg = parent.createGraphics(w, h);
+		pg = parent.createGraphics(width, height);
 		stackPG = new StackPGraphics(parent);
 		displayables = new ArrayList<Displayable>();
 	}
@@ -20,8 +21,14 @@ public class Canvas extends Displayable {
 		pg.clear();		
 		stackPG.push(pg);
 		for (Displayable d : displayables) {
-			parent.blendMode(d.blendMode);
-			d.update();
+			parent.blendMode(d.getBlendMode());
+			d.update();			
+			if (d instanceof Filter) {
+				Filter f = (Filter) d;
+				if (f.getClearOnDisplay()) {
+					pg.clear();
+				}
+			}
 			d.display();
 		}
 		stackPG.pop();
@@ -32,11 +39,14 @@ public class Canvas extends Displayable {
 	}
 	
 	public void add(Displayable d) {
+		stackPG.push(pg);
+		d.setStackPGraphics(stackPG);
+		d.init();
+		stackPG.pop();
 		displayables.add(d);
 	}
 	
-	public int getBlendMode() {
-		return 1;
-	}
+//	public int getBlendMode() {
+//		return 1;
+//	}
 }
-

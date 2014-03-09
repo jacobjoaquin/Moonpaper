@@ -18,6 +18,23 @@ public class StackPGraphics {
 		pgList = new ArrayList<PGraphics>();
 		dimensionsList = new ArrayList<PVector>();
 	}
+	
+	public PGraphics get() {
+		return pApplet.g;
+	}
+	
+	/**
+	 * Creates and returns copy of current PGraphics in stack.
+	 * 
+	 * @return PGraphics
+	 */
+	public PGraphics copy() {
+		PGraphics pgCopy = pApplet
+				.createGraphics(pApplet.width, pApplet.height);
+		pgCopy.copy(pApplet.g, 0, 0, pApplet.g.width, pApplet.g.height, 0, 0,
+				pApplet.g.width, pApplet.g.height);
+		return pgCopy;
+	}
 
 	public PGraphics push() {
 		return push(pApplet.createGraphics(pApplet.width, pApplet.height));

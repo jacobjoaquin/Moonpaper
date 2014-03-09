@@ -3,6 +3,11 @@ class Bouncy extends Displayable {
   PVector velocity;
   float radius;
   
+  void init() {
+    location.x = width / 2;
+    location.y = height / 2;
+  }
+  
   Bouncy(PVector l, PVector v, float r) {
     location = l;
     velocity = v;

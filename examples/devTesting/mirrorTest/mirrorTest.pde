@@ -1,7 +1,7 @@
 import moonpaper.*;
 
-int nCircles = 16;
-int circleSize = 64;
+int nCircles = 12;
+int circleSize = 125;
 Canvas canvas;
 
 void setup() {
@@ -9,11 +9,13 @@ void setup() {
   canvas = new Canvas(this, width, height);
   
   for (int i = 0; i < nCircles; i++) {
-    float angle = map(i, 0, nCircles, 0, TWO_PI);
+    float angle = random(TWO_PI);;
     Bouncy b = new Bouncy(new PVector(width / 2, height / 2), PVector.fromAngle(angle), circleSize);
-    b.blendMode(DIFFERENCE);
+    b.setBlendMode(DIFFERENCE);
     canvas.add(b);
   }
+  
+  canvas.add(new Mirror());
 }
 
 void draw() {
