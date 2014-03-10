@@ -1,11 +1,10 @@
 package moonpaper;
 
-import processing.core.*;
+import processing.core.PApplet;
 
 public class Displayable {
 	protected StackPGraphics stackPG;
 	private int blendMode = PApplet.BLEND;
-	//private boolean clearDisplay = false;
 	
 	public void init() {
 	};
@@ -30,13 +29,4 @@ public class Displayable {
 	public void setStackPGraphics(StackPGraphics stackPG_) {
 		stackPG = stackPG_;
 	}
-	/*
-	public void setClearOnDisplay(boolean clearDisplay_) {
-		clearDisplay = clearDisplay_;
-	}
-	
-	public boolean getClearOnDisplay() {
-		return clearDisplay;
-	}
-	*/
 }

@@ -1,7 +1,7 @@
 import moonpaper.*;
 
 int nCircles = 16;
-int circleSize = 64;
+int circleSize = 2;
 Canvas canvas;
 
 void setup() {
@@ -19,7 +19,8 @@ void setup() {
   
   canvas.add(new Mirror());
   Sparkle sparkle = new Sparkle();
-  sparkle.setClearOnDisplay(true);
+  //sparkle.setClearOnDisplay(true);
+  sparkle.nDots = 100;
   canvas.add(sparkle);
 }
 
@@ -30,5 +31,5 @@ void draw() {
   line(0, 0, width, height);
   canvas.update();
   canvas.display();
-//  println(frameRate);
+  println(frameRate);
 }
