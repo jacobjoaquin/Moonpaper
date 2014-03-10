@@ -5,7 +5,7 @@ import processing.core.PApplet;
 public class Displayable {
 	protected StackPGraphics stackPG;
 	private int blendMode = PApplet.BLEND;
-	
+
 	public void init() {
 	};
 
@@ -25,7 +25,7 @@ public class Displayable {
 	public int getBlendMode() {
 		return blendMode;
 	}
-	
+
 	public void setStackPGraphics(StackPGraphics stackPG_) {
 		stackPG = stackPG_;
 	}

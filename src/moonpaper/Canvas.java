@@ -11,6 +11,13 @@ public class Canvas extends Displayable {
 	private StackPGraphics stackPG;
 	private boolean isActiveState = true;
 
+	public Canvas(PApplet parent_) {
+		parent = parent_;
+		pg = parent.createGraphics(parent.width, parent.height);
+		stackPG = new StackPGraphics(parent);
+		displayables = new ArrayList<Displayable>();
+	}
+
 	public Canvas(PApplet parent_, int width, int height) {
 		parent = parent_;
 		pg = parent.createGraphics(width, height);
@@ -33,14 +40,21 @@ public class Canvas extends Displayable {
 						pg.clear();
 					}
 				}
-
-				d.display();
 			}
 			stackPG.pop();
 		}
 	}
 
 	public void display() {
+		if (isActiveState) {
+			pg.clear();
+			stackPG.push(pg);
+			for (Displayable d : displayables) {
+				parent.blendMode(d.getBlendMode());
+				d.display();
+			}
+			stackPG.pop();
+		}
 		parent.image(pg, 0, 0);
 	}
 

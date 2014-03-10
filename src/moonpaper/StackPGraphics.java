@@ -18,11 +18,11 @@ public class StackPGraphics {
 		pgList = new ArrayList<PGraphics>();
 		dimensionsList = new ArrayList<PVector>();
 	}
-	
+
 	public PGraphics get() {
 		return pApplet.g;
 	}
-	
+
 	/**
 	 * Creates and returns copy of current PGraphics in stack.
 	 * 

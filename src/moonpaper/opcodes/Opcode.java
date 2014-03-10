@@ -1,9 +1,30 @@
 package moonpaper.opcodes;
 
+import moonpaper.Controller;
+
 public class Opcode {
-	// RoutineContoller rc
+	Controller controller;
+	public boolean isInitialized = false;
+
+	public Opcode() {
+	}
+
+	public void exec() {
+	}
+
+	public void init() {
+		isInitialized = true;
+	}
 	
-	Opcode() { }
-	private void exec() { }
-	private void init() { }
+	public void cleanup() {
+		isInitialized = false;
+	}
+
+	public Opcode get() {
+		return this;
+	}
+
+	public void setController(Controller controller_) {
+		controller = controller_;
+	}
 }

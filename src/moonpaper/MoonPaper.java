@@ -1,5 +1,9 @@
 package moonpaper;
 
+//import moonpaper.opcodes.Canvas;
+//import moonpaper.opcodes.CanvasRoutine;
+//import moonpaper.opcodes.DomeSetCanvas;
+import moonpaper.*;
 import processing.core.*;
 
 /*
@@ -9,7 +13,7 @@ public class MoonPaper {
 	public final static String VERSION = "##library.prettyVersion##";
 	private PApplet pApplet;
 	private StackPGraphics stackPG;
-	
+
 	public MoonPaper(PApplet parent) {
 		pApplet = parent;
 		stackPG = new StackPGraphics(pApplet);
@@ -23,15 +27,12 @@ public class MoonPaper {
 	public static String version() {
 		return VERSION;
 	}
-	
-	
+
 	/*
-	public Layer createLayer() { }	
-	public void push(Routine r) { }	
-	*/
+	 * public Layer createLayer() { } public void push(Routine r) { }
+	 */
 
 	public void update() {
 		// Update all layers
 	}
 }
-
