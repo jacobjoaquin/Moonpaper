@@ -1,7 +1,7 @@
 import moonpaper.*;
 
 int nCircles = 16;
-int circleSize = 2;
+int circleSize = 100;
 Canvas canvas;
 
 void setup() {
@@ -31,5 +31,7 @@ void draw() {
   line(0, 0, width, height);
   canvas.update();
   canvas.display();
+
+  
   println(frameRate);
 }
