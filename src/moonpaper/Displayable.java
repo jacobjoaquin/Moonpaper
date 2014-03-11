@@ -18,15 +18,15 @@ public class Displayable {
 	public void display() {
 	}
 
-	public void setBlendMode(int blendMode_) {
+	public final void setBlendMode(int blendMode_) {
 		blendMode = blendMode_;
 	}
 
-	public int getBlendMode() {
+	public final int getBlendMode() {
 		return blendMode;
 	}
 
-	public void setStackPGraphics(StackPGraphics stackPG_) {
+	public final void setStackPGraphics(StackPGraphics stackPG_) {
 		stackPG = stackPG_;
 	}
 }

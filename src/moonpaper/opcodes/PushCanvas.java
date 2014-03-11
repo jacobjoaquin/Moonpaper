@@ -15,6 +15,5 @@ public class PushCanvas extends Opcode {
 
 	public void exec() {
 		canvas.add(displayable);
-		controller.nextOpcode();
 	}
 }

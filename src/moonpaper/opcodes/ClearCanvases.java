@@ -7,6 +7,5 @@ public class ClearCanvases extends Opcode {
 		for (Canvas canvas : controller.canvases) {
 			canvas.clear();
 		}
-		controller.nextOpcode();
 	}
 }

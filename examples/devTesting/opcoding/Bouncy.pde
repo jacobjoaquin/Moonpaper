@@ -2,6 +2,7 @@ class Bouncy extends Displayable {
   PVector location;
   PVector velocity;
   float radius;
+  color c = color(255);
   
   Bouncy(PVector l, PVector v, float r) {
     location = l;
@@ -10,7 +11,7 @@ class Bouncy extends Displayable {
   }
   
   void display() {
-    fill(180, 0, 0);
+    fill(c);
     noStroke();
     ellipse(location.x, location.y, radius * 2, radius * 2);
   }

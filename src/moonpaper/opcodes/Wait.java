@@ -11,6 +11,7 @@ public class Wait extends Opcode {
 	public void init() {
 		super.init();
 		counter = nFrames;
+		hold();
 	}
 	
 	public Wait(int nFrames_) {
@@ -19,7 +20,7 @@ public class Wait extends Opcode {
 
 	public void exec() {
 		if (counter <= 0) {
-			controller.nextOpcode();
+			release();
 		}
 		counter--;
 	}
