@@ -6,7 +6,7 @@ import moonpaper.opcodes.*;
 import processing.core.PApplet;
 
 public class Controller {
-	private PApplet parent;
+	public PApplet parent;
 	public ArrayList<Canvas> canvases;
 	public ArrayList<Opcode> opcodes;
 	public int currentOpcode = 0;

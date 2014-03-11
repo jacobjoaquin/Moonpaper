@@ -54,8 +54,8 @@ public class Canvas extends Displayable {
 				d.display();
 			}
 			stackPG.pop();
+			parent.image(pg, 0, 0);
 		}
-		parent.image(pg, 0, 0);
 	}
 
 	public void add(Displayable d) {
@@ -72,5 +72,9 @@ public class Canvas extends Displayable {
 
 	public boolean isActive() {
 		return isActiveState;
+	}
+	
+	public void clear() {
+		displayables.clear();
 	}
 }

@@ -5,6 +5,7 @@ import moonpaper.Controller;
 public class Opcode {
 	Controller controller;
 	public boolean isInitialized = false;
+	public boolean onHold = false;
 
 	public Opcode() {
 	}
@@ -26,5 +27,13 @@ public class Opcode {
 
 	public void setController(Controller controller_) {
 		controller = controller_;
+	}
+	
+	public void hold() {
+		onHold = true;
+	}
+	
+	public void release() {
+		onHold = false;
 	}
 }
