@@ -33,6 +33,7 @@ public class Opcode {
 
 	protected final void release() {
 		releaseState = true;
+		cleanup();
 	}
 
 	public final boolean getRelease() {

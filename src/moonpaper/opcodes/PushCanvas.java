@@ -13,6 +13,7 @@ public class PushCanvas extends Opcode {
 		displayable = displayable_;
 	}
 
+	@Override
 	public void exec() {
 		canvas.add(displayable);
 	}

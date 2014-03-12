@@ -57,12 +57,9 @@ public class Controller {
 
 	public void update() {
 		updateUnitGenerators();
-
-		// Updates each canvas
 		for (Canvas canvas : canvases) {
 			canvas.update();
 		}
-
 		updateOpcodes();
 	}
 
@@ -71,6 +68,7 @@ public class Controller {
 			while (true) {
 				Opcode o = opcodes.get(currentOpcode);
 				o.exec();
+
 				if (o.getRelease()) {
 					nextOpcode();
 				} else {

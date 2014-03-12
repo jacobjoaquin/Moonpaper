@@ -7,7 +7,7 @@ Canvas canvas2;
 
 void setup() {
   size(100, 100);
-//  frameRate(30);
+//  frameRate(2);
   controller = new Controller(this);  
   canvas1 = controller.createCanvas();
   canvas2 = controller.createCanvas();
@@ -17,9 +17,11 @@ void setup() {
   Bouncy b2 = new Bouncy(new PVector(width / 2, height / 2), PVector.random2D(), 20);
   b2.c = color(0, 255, 128);
   
-  int nFrames = 3;
+  ModFloat someNumber = new ModFloat(200.0);
+  
+  int nFrames = 60;
   controller.seq(new ClearCanvases());
-  controller.seq(new Line());
+  controller.seq(new Line(5, someNumber, 100));
   controller.seq(new PushCanvas(canvas1, b1));
   controller.seq(new PushCanvas(canvas2, b2));  
   controller.seq(new Wait(nFrames));

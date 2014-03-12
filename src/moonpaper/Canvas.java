@@ -25,6 +25,7 @@ public class Canvas extends Displayable {
 		displayables = new ArrayList<Displayable>();
 	}
 
+	@Override
 	public void update() {
 		if (isActiveState) {
 			pg.clear();
@@ -45,6 +46,7 @@ public class Canvas extends Displayable {
 		}
 	}
 
+	@Override
 	public void display() {
 		if (isActiveState) {
 			pg.clear();
@@ -73,7 +75,7 @@ public class Canvas extends Displayable {
 	public boolean isActive() {
 		return isActiveState;
 	}
-	
+
 	public void clear() {
 		displayables.clear();
 	}

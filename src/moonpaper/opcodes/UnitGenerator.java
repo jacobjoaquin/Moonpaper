@@ -6,7 +6,6 @@ public class UnitGenerator extends Opcode {
 	@Override
 	public void init() {
 		super.init();
-//		releaseState = false;
 		hold();
 	}
 }
