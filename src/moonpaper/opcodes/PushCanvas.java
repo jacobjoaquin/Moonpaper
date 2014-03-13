@@ -1,5 +1,6 @@
 package moonpaper.opcodes;
 
+import processing.core.PApplet;
 import moonpaper.Canvas;
 import moonpaper.Displayable;
 
@@ -15,6 +16,7 @@ public class PushCanvas extends MoonCodeEvent {
 
 	@Override
 	public void exec() {
+		PApplet.println("PushCanvas.exec()");
 		canvas.add(displayable);
 	}
 }

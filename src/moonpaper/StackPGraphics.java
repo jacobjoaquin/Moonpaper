@@ -1,6 +1,8 @@
 package moonpaper;
 
-import processing.core.*;
+import processing.core.PApplet;
+import processing.core.PGraphics;
+import processing.core.PVector;
 import java.util.ArrayList;
 
 public class StackPGraphics {

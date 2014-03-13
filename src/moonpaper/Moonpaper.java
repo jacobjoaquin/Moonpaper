@@ -60,4 +60,9 @@ public final class Moonpaper {
 			canvas.update();
 		}
 	}
+	
+	public void debugMe(String s, Object o) {
+		String oName = o.getClass().getName();
+		PApplet.println(s + ": " + oName);
+	}
 }

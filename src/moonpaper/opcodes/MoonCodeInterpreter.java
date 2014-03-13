@@ -2,13 +2,16 @@ package moonpaper.opcodes;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import processing.core.PApplet;
 import moonpaper.Moonpaper;
 
 public final class MoonCodeInterpreter {
 	private Moonpaper controller;
 	private ArrayList<MoonCode> mooncodes;
 	private ArrayList<MoonCodeGenerator> generators;
-	private int index;
+	private Iterator<MoonCode> iterator;
+	private MoonCode currentMooncode;
 
 	public MoonCodeInterpreter(Moonpaper controller_) {
 		controller = controller_;
@@ -23,11 +26,11 @@ public final class MoonCodeInterpreter {
 	}
 
 	private void next() {
-		MoonCode mooncode = mooncodes.get(index);
-		mooncode.cleanup();
-		index = (index + 1) % mooncodes.size();
-		mooncode = mooncodes.get(index);
-		mooncode.init();
+		if (!iterator.hasNext()) {
+			iterator = mooncodes.iterator();
+		}
+		currentMooncode = iterator.next();
+		currentMooncode.init();
 	}
 
 	public void update() {
@@ -35,34 +38,37 @@ public final class MoonCodeInterpreter {
 		updateMoonCode();
 	}
 
-	private void updateMoonCode() {
-		if (mooncodes.size() >= 1) {
-			while (true) {
-				MoonCode mooncode = mooncodes.get(index);
-				mooncode.exec();
-
-				if (mooncode.getRelease()) {
-					next();
-				} else {
-					if (mooncode instanceof MoonCodeGenerator) {
-						generators.add((MoonCodeGenerator) mooncode);
-						next();
-					} else {
-						break;
-					}
-				}
+	private void updateGenerators() {
+		Iterator<MoonCodeGenerator> i = generators.iterator();
+		while (i.hasNext()) {
+			MoonCodeGenerator generator = i.next();
+			String n = generator.getClass().getName();
+			PApplet.println("generator class name: " + n);
+			generator.exec();
+			if (generator.getRelease()) {
+				i.remove();
 			}
 		}
 	}
 
-	private void updateGenerators() {
-		Iterator<MoonCodeGenerator> i = generators.iterator();
-		while (i.hasNext()) {
-			MoonCodeGenerator generators = i.next();
-			generators.exec();
-			if (generators.getRelease()) {
-				i.remove();
+	private void updateMoonCode() {
+		// TODO: This first block should be done elsewhere. But where? This may
+		// require that Moonpaper.begin() and end() methods are added.
+		if (iterator == null) {
+			iterator = mooncodes.iterator();
+			currentMooncode = iterator.next();
+		}
+		while (true) {
+//			controller.debugMe("currentMoonCode()", currentMooncode);
+			currentMooncode.exec();
+			if (!currentMooncode.getRelease()) {
+				if (currentMooncode instanceof MoonCodeGenerator) {
+					generators.add((MoonCodeGenerator) currentMooncode);					
+				} else if (currentMooncode instanceof MoonCodeHold) {
+					return;
+				}
 			}
+			next();
 		}
 	}
 }

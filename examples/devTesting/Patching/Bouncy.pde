@@ -1,7 +1,7 @@
 class Bouncy extends Displayable {
-  Patchable<Float> radius;
   PVector location;
   PVector velocity;
+  Patchable<Float> radius;
   color c = color(255);
   
   Bouncy(PVector l, PVector v, Patchable<Float> r) {
