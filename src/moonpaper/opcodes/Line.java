@@ -13,7 +13,7 @@ public class Line extends MoonCodeGenerator {
 		nFrames = nFrames_;
 		start = start_;
 		end = end_;
-		value = new Patchable<Float>(start_);
+		value = new Patchable<>(start_);
 	}
 
 	public Line(int nFrames_, Patchable<Float> pf, float end_) {

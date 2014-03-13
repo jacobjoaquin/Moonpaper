@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import processing.core.PGraphics;
 import processing.core.PApplet;
 
-public class Canvas extends Displayable {
+public class Cel extends Displayable {
 	public PGraphics pg;
 	private ArrayList<Displayable> displayables;
 	private PApplet parent;
 	private StackPGraphics stackPG;
 	private boolean isActiveState = true;
 
-	public Canvas(PApplet parent_) {
+	public Cel(PApplet parent_) {
 		parent = parent_;
 		pg = parent.createGraphics(parent.width, parent.height);
 		stackPG = new StackPGraphics(parent);
-		displayables = new ArrayList<Displayable>();
+		displayables = new ArrayList<>();
 	}
 
-	public Canvas(PApplet parent_, int width, int height) {
+	public Cel(PApplet parent_, int width, int height) {
 		parent = parent_;
 		pg = parent.createGraphics(width, height);
 		stackPG = new StackPGraphics(parent);

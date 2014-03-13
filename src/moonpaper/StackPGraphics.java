@@ -12,13 +12,13 @@ public class StackPGraphics {
 
 	public StackPGraphics(PApplet p_) {
 		pApplet = p_;
-		pgList = new ArrayList<PGraphics>();
-		dimensionsList = new ArrayList<PVector>();
+		pgList = new ArrayList<>();
+		dimensionsList = new ArrayList<>();
 	}
 
 	StackPGraphics() {
-		pgList = new ArrayList<PGraphics>();
-		dimensionsList = new ArrayList<PVector>();
+		pgList = new ArrayList<>();
+		dimensionsList = new ArrayList<>();
 	}
 
 	public PGraphics get() {

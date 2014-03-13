@@ -1,22 +1,22 @@
 package moonpaper.opcodes;
 
 import processing.core.PApplet;
-import moonpaper.Canvas;
+import moonpaper.Cel;
 import moonpaper.Displayable;
 
-public class PushCanvas extends MoonCodeEvent {
+public class PushCel extends MoonCodeEvent {
 	private Displayable displayable;
-	private Canvas canvas;
+	private Cel cel;
 
-	public PushCanvas(Canvas canvas_, Displayable displayable_) {
+	public PushCel(Cel cel_, Displayable displayable_) {
 		super();
-		canvas = canvas_;
+		cel = cel_;
 		displayable = displayable_;
 	}
 
 	@Override
 	public void exec() {
 		PApplet.println("PushCanvas.exec()");
-		canvas.add(displayable);
+		cel.add(displayable);
 	}
 }

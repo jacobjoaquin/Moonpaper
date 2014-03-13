@@ -9,12 +9,12 @@ import processing.core.PApplet;
 public final class Moonpaper {
 	public final static String VERSION = "##library.prettyVersion##";
 	private PApplet parent;
-	private ArrayList<Canvas> canvases;
+	private ArrayList<Cel> cels;
 	private MoonCodeInterpreter interpreter;
 
 	public Moonpaper(PApplet pApplet_) {
 		parent = pApplet_;
-		canvases = new ArrayList<Canvas>();
+		cels = new ArrayList<>();
 		interpreter = new MoonCodeInterpreter(this);
 	}
 
@@ -27,27 +27,27 @@ public final class Moonpaper {
 		return VERSION;
 	}
 
-	public Canvas createCanvas() {
-		Canvas canvas = new Canvas(parent);
-		canvases.add(canvas);
-		return canvas;
+	public Cel createCel() {
+		Cel cel = new Cel(parent);
+		cels.add(cel);
+		return cel;
 	}
 
-	public Canvas createCanvas(int width, int height) {
-		Canvas canvas = new Canvas(parent, width, height);
+	public Cel createCel(int width, int height) {
+		Cel cel = new Cel(parent, width, height);
 		// TODO: Should this automatically add canvas?
-		canvases.add(canvas);
-		return canvas;
+		cels.add(cel);
+		return cel;
 	}
 
 	public void display() {
-		for (Canvas canvas : canvases) {
-			canvas.display();
+		for (Cel c : cels) {
+			c.display();
 		}
 	}
 
-	public Iterator<Canvas> getCanvasesIterator() {
-		return canvases.iterator();
+	public Iterator<Cel> getCelIterator() {
+		return cels.iterator();
 	}
 
 	public void seq(MoonCode mooncode) {
@@ -56,8 +56,8 @@ public final class Moonpaper {
 
 	public void update() {
 		interpreter.update();
-		for (Canvas canvas : canvases) {
-			canvas.update();
+		for (Cel c : cels) {
+			c.update();
 		}
 	}
 	
