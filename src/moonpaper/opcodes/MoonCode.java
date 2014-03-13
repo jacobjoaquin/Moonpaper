@@ -2,8 +2,6 @@ package moonpaper.opcodes;
 
 import moonpaper.Moonpaper;
 
-// public class Process extends Opcode is the way to go.
-
 public abstract class MoonCode {
 	Moonpaper controller;
 	MoonCodeInterpreter interpreter;

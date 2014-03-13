@@ -1,12 +1,12 @@
 import moonpaper.*;
 
-Controller controller;
+Moonpaper controller;
 Canvas canvas0;
 Canvas canvas1;
 
 void setup() {
   size(500, 500);
-  controller = new Controller(this);
+  controller = new Moonpaper(this);
   canvas0 = controller.createCanvas();
   canvas1 = controller.createCanvas();
   
