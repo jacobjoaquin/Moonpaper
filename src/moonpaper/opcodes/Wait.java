@@ -1,6 +1,6 @@
 package moonpaper.opcodes;
 
-public class Wait extends Opcode {
+public class Wait extends MoonCodeHold {
 	private int nFrames;
 	private int counter;
 
@@ -12,7 +12,6 @@ public class Wait extends Opcode {
 	public void init() {
 		super.init();
 		counter = nFrames;
-		hold();
 	}
 
 	@Override

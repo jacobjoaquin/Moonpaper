@@ -1,15 +1,16 @@
 package moonpaper.opcodes;
 
-import moonpaper.Controller;
+import moonpaper.Moonpaper;
 
 // public class Process extends Opcode is the way to go.
 
-public class Opcode {
-	Controller controller;
+public abstract class MoonCode {
+	Moonpaper controller;
+	MoonCodeInterpreter interpreter;
 	public boolean isInitialized = false;
 	protected boolean releaseState = true;
 
-	public Opcode() {
+	public MoonCode() {
 	}
 
 	public void exec() {
@@ -23,8 +24,12 @@ public class Opcode {
 		isInitialized = false;
 	}
 
-	public void setController(Controller controller_) {
+	public void setController(Moonpaper controller_) {
 		controller = controller_;
+	}
+	
+	public void setInterpreter(MoonCodeInterpreter interpreter_) {
+		interpreter = interpreter_;		
 	}
 
 	protected final void hold() {

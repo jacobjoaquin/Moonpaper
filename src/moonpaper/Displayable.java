@@ -2,7 +2,7 @@ package moonpaper;
 
 import processing.core.PApplet;
 
-public class Displayable {
+public abstract class Displayable {
 	protected StackPGraphics stackPG;
 	private int blendMode = PApplet.BLEND;
 

@@ -3,7 +3,7 @@ package moonpaper.opcodes;
 import moonpaper.Canvas;
 import moonpaper.Displayable;
 
-public class PushCanvas extends Opcode {
+public class PushCanvas extends MoonCodeEvent {
 	private Displayable displayable;
 	private Canvas canvas;
 

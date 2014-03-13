@@ -2,7 +2,7 @@ package moonpaper.opcodes;
 
 import moonpaper.Patchable;
 
-public class Line extends UnitGenerator {
+public class Line extends MoonCodeGenerator {
 	private float start;
 	private float end;
 	private int nFrames;

@@ -3,7 +3,7 @@ package moonpaper.opcodes;
 import java.util.Iterator;
 import moonpaper.Canvas;
 
-public class FlipActive extends Opcode {
+public class FlipActive extends MoonCodeEvent {
 	public FlipActive() {
 		super();
 	}
