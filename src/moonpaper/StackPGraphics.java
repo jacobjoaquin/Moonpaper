@@ -8,10 +8,10 @@ import java.util.ArrayList;
 public class StackPGraphics {
 	private ArrayList<PGraphics> pgList;
 	private ArrayList<PVector> dimensionsList;
-	private PApplet pApplet;
+	private PApplet papplet;
 
-	public StackPGraphics(PApplet p_) {
-		pApplet = p_;
+	public StackPGraphics(PApplet papplet_) {
+		papplet = papplet_;
 		pgList = new ArrayList<PGraphics>();
 		dimensionsList = new ArrayList<PVector>();
 	}
@@ -22,7 +22,7 @@ public class StackPGraphics {
 	}
 
 	public PGraphics get() {
-		return pApplet.g;
+		return papplet.g;
 	}
 
 	/**
@@ -31,71 +31,83 @@ public class StackPGraphics {
 	 * @return PGraphics
 	 */
 	public PGraphics copy() {
-		PGraphics pgCopy = pApplet
-				.createGraphics(pApplet.width, pApplet.height);
-		pgCopy.copy(pApplet.g, 0, 0, pApplet.g.width, pApplet.g.height, 0, 0,
-				pApplet.g.width, pApplet.g.height);
+		PGraphics pgCopy = papplet
+				.createGraphics(papplet.width, papplet.height);
+		pgCopy.clear();
+		pgCopy.copy(papplet.g, 0, 0, papplet.g.width, papplet.g.height, 0, 0,
+				papplet.g.width, papplet.g.height);
 		return pgCopy;
 	}
 
 	public PGraphics push() {
-		return push(pApplet.createGraphics(pApplet.width, pApplet.height));
+		// TODO: Should copy currenet render type.
+		PGraphics pg = papplet.createGraphics(papplet.width, papplet.height);
+		pg.clear();
+		return push(pg);
 	}
 
 	public PGraphics push(int w, int h) {
-		return push(pApplet.createGraphics(w, h));
+		// TODO: Should copy currenet render type.
+		PGraphics pg = papplet.createGraphics(w, h);
+		pg.clear();
+		return push(pg);
 	}
 
 	public PGraphics push(int w, int h, String renderer) {
-		PGraphics pg = pApplet.createGraphics(w, h, renderer);
+		PGraphics pg = papplet.createGraphics(w, h, renderer);
+		pg.clear();
 		return push(pg);
 	}
 
 	public PGraphics push(PGraphics pg) {
-		pgList.add(pApplet.g);
-		dimensionsList.add(new PVector(pApplet.width, pApplet.height));
-		pApplet.g = pg;
-		pApplet.width = pg.width;
-		pApplet.height = pg.height;
-		pApplet.g.beginDraw();
-		return pApplet.g;
+		pgList.add(papplet.g);
+		dimensionsList.add(new PVector(papplet.width, papplet.height));
+		papplet.g = pg;
+		papplet.width = pg.width;
+		papplet.height = pg.height;
+		papplet.g.beginDraw();
+		return papplet.g;
 	}
 
 	public PGraphics pushCopy() {
-		PGraphics pgCopy = pApplet
-				.createGraphics(pApplet.width, pApplet.height);
-		pgCopy.copy(pApplet.g, 0, 0, pApplet.g.width, pApplet.g.height, 0, 0,
-				pApplet.g.width, pApplet.g.height);
+		// TODO: Should copy currenet render type.
+		PGraphics pgCopy = papplet
+				.createGraphics(papplet.width, papplet.height);
+		pgCopy.clear();
+		pgCopy.copy(papplet.g, 0, 0, papplet.g.width, papplet.g.height, 0, 0,
+				papplet.g.width, papplet.g.height);
 		return push(pgCopy);
 	}
 
 	public PGraphics pushCopy(PGraphics pg) {
-		PGraphics pgCopy = pApplet.createGraphics(pg.width, pg.height);
+		// TODO: Should copy currenet render type.
+		PGraphics pgCopy = papplet.createGraphics(pg.width, pg.height);
+		pgCopy.clear();
 		pgCopy.copy(pg, 0, 0, pg.width, pg.height, 0, 0, pg.width, pg.height);
 		return push(pgCopy);
 	}
 
 	public PGraphics pop() {
-		pApplet.g.endDraw();
-		PGraphics pgReturn = pApplet.g;
-		pApplet.g = pgList.remove(pgList.size() - 1);
+		papplet.g.endDraw();
+		PGraphics pgReturn = papplet.g;
+		papplet.g = pgList.remove(pgList.size() - 1);
 		PVector d = dimensionsList.remove(dimensionsList.size() - 1);
-		pApplet.width = (int) d.x;
-		pApplet.height = (int) d.y;
+		papplet.width = (int) d.x;
+		papplet.height = (int) d.y;
 		return pgReturn;
 	}
 
 	public PGraphics pop(int blendMode) {
-		pApplet.g.endDraw();
-		PGraphics pgReturn = pApplet.g;
-		pApplet.g = pgList.remove(pgList.size() - 1);
+		papplet.g.endDraw();
+		PGraphics pgReturn = papplet.g;
+		papplet.g = pgList.remove(pgList.size() - 1);
 		PVector d = dimensionsList.remove(dimensionsList.size() - 1);
-		pApplet.width = (int) d.x;
-		pApplet.height = (int) d.y;
+		papplet.width = (int) d.x;
+		papplet.height = (int) d.y;
 		int blendTemp = PApplet.BLEND;
-		pApplet.blendMode(blendMode);
-		pApplet.image(pgReturn, 0, 0);
-		pApplet.blendMode(blendTemp);
+		papplet.blendMode(blendMode);
+		papplet.image(pgReturn, 0, 0);
+		papplet.blendMode(blendTemp);
 		return pgReturn;
 	}
 }

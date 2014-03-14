@@ -5,7 +5,7 @@ Moonpaper moonpaper;
 
 void setup() {
   size(500, 500, P2D);
-//  frameRate(1);
+//  frameRate(120);
   moonpaper = new Moonpaper(this);  
   Cel cel1 = moonpaper.createCel();
   Cel cel2 = moonpaper.createCel();
@@ -41,6 +41,7 @@ void draw() {
   //  if (frameCount % 60 == 0) {
 //    println("frameCount: " + frameCount);
   //  }
+//  println(frameRate);
   background(64, 0, 0);
   moonpaper.update();
   moonpaper.display();

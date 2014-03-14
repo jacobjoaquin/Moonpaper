@@ -7,31 +7,32 @@ import processing.core.PApplet;
 public class Cel extends Displayable {
 	public PGraphics pg;
 	private ArrayList<Displayable> displayables;
-	private PApplet parent;
+	private PApplet papplet;
 	private StackPGraphics stackPG;
 	private boolean isActiveState = true;
 
 	public Cel(PApplet parent_) {
-		parent = parent_;
-		pg = parent.createGraphics(parent.width, parent.height);
-		stackPG = new StackPGraphics(parent);
+		papplet = parent_;
+		pg = papplet.createGraphics(papplet.width, papplet.height);
+		stackPG = new StackPGraphics(papplet);
 		displayables = new ArrayList<Displayable>();
 	}
 
 	public Cel(PApplet parent_, int width, int height) {
-		parent = parent_;
-		pg = parent.createGraphics(width, height);
-		stackPG = new StackPGraphics(parent);
+		papplet = parent_;
+		pg = papplet.createGraphics(width, height);
+		stackPG = new StackPGraphics(papplet);
 		displayables = new ArrayList<Displayable>();
 	}
 
 	@Override
 	public void update() {
 		if (isActiveState) {
-			pg.clear();
+//			pg.clear();
 			stackPG.push(pg);
+			pg.clear();
 			for (Displayable d : displayables) {
-				parent.blendMode(d.getBlendMode());
+				papplet.blendMode(d.getBlendMode());
 				d.update();
 
 				// TODO: I don't like this. Do something about it.
@@ -52,11 +53,11 @@ public class Cel extends Displayable {
 			pg.clear();
 			stackPG.push(pg);
 			for (Displayable d : displayables) {
-				parent.blendMode(d.getBlendMode());
+				papplet.blendMode(d.getBlendMode());
 				d.display();
 			}
 			stackPG.pop();
-			parent.image(pg, 0, 0);
+			papplet.image(pg, 0, 0);
 		}
 	}
 
