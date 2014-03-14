@@ -15,7 +15,7 @@ public class Cel extends Displayable {
 		parent = parent_;
 		pg = parent.createGraphics(parent.width, parent.height);
 		stackPG = new StackPGraphics(parent);
-		displayables = new ArrayList<>();
+		displayables = new ArrayList<Displayable>();
 	}
 
 	public Cel(PApplet parent_, int width, int height) {

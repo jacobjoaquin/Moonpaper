@@ -4,7 +4,7 @@ import moonpaper.opcodes.*;
 Moonpaper moonpaper;
 
 void setup() {
-  size(500, 500);
+  size(500, 500, P2D);
 //  frameRate(1);
   moonpaper = new Moonpaper(this);  
   Cel cel1 = moonpaper.createCel();

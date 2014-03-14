@@ -12,13 +12,13 @@ public class StackPGraphics {
 
 	public StackPGraphics(PApplet p_) {
 		pApplet = p_;
-		pgList = new ArrayList<>();
-		dimensionsList = new ArrayList<>();
+		pgList = new ArrayList<PGraphics>();
+		dimensionsList = new ArrayList<PVector>();
 	}
 
 	StackPGraphics() {
-		pgList = new ArrayList<>();
-		dimensionsList = new ArrayList<>();
+		pgList = new ArrayList<PGraphics>();
+		dimensionsList = new ArrayList<PVector>();
 	}
 
 	public PGraphics get() {
@@ -46,10 +46,10 @@ public class StackPGraphics {
 		return push(pApplet.createGraphics(w, h));
 	}
 
-	/*
-	 * public PGraphics push(int w, int h, String renderer) { PGraphics pg =
-	 * pApplet.createGraphics(w, h, renderer); return push(pg); }
-	 */
+	public PGraphics push(int w, int h, String renderer) {
+		PGraphics pg = pApplet.createGraphics(w, h, renderer);
+		return push(pg);
+	}
 
 	public PGraphics push(PGraphics pg) {
 		pgList.add(pApplet.g);

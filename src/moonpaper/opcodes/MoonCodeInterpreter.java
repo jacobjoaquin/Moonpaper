@@ -15,8 +15,8 @@ public final class MoonCodeInterpreter {
 
 	public MoonCodeInterpreter(Moonpaper controller_) {
 		controller = controller_;
-		mooncodes = new ArrayList<>();
-		generators = new ArrayList<>();
+		mooncodes = new ArrayList<MoonCode>();
+		generators = new ArrayList<MoonCodeGenerator>();
 	}
 
 	public void add(MoonCode mooncode) {
@@ -42,8 +42,6 @@ public final class MoonCodeInterpreter {
 		Iterator<MoonCodeGenerator> i = generators.iterator();
 		while (i.hasNext()) {
 			MoonCodeGenerator generator = i.next();
-			String n = generator.getClass().getName();
-			PApplet.println("generator class name: " + n);
 			generator.exec();
 			if (generator.getRelease()) {
 				i.remove();

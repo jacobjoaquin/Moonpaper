@@ -3,14 +3,15 @@ import moonpaper.*;
 StackPGraphics stackPG = new StackPGraphics(this);
 
 void setup() {
-  size(500, 500);
+  size(500, 500, P2D);
   smooth();
   noLoop();
   background(0);
 }
 
 void draw() {
-  PGraphics pg = stackPG.push(100, 100);
+  PGraphics pg = stackPG.push(100, 100, P2D);
+  background(0, 0);
   stroke(255);
   line(0, 0, width, height);
   stackPG.pop();  

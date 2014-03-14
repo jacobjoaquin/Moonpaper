@@ -11,10 +11,11 @@ public final class Moonpaper {
 	private PApplet parent;
 	private ArrayList<Cel> cels;
 	private MoonCodeInterpreter interpreter;
+	private boolean isRoot;
 
 	public Moonpaper(PApplet pApplet_) {
 		parent = pApplet_;
-		cels = new ArrayList<>();
+		cels = new ArrayList<Cel>();
 		interpreter = new MoonCodeInterpreter(this);
 	}
 
@@ -25,6 +26,11 @@ public final class Moonpaper {
 	 */
 	public static String version() {
 		return VERSION;
+	}
+
+	public void addMoonpaper(Moonpaper newMoon) {
+		// A moonpaper object can be controlled by another moonpaper object. In
+		// essence, it's like adding a setlist.
 	}
 
 	public Cel createCel() {
@@ -60,7 +66,7 @@ public final class Moonpaper {
 			c.update();
 		}
 	}
-	
+
 	public void debugMe(String s, Object o) {
 		String oName = o.getClass().getName();
 		PApplet.println(s + ": " + oName);
