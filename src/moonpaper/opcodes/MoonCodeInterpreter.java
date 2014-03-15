@@ -3,7 +3,6 @@ package moonpaper.opcodes;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import processing.core.PApplet;
 import moonpaper.Moonpaper;
 
 public final class MoonCodeInterpreter {

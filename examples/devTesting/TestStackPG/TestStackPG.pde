@@ -11,8 +11,7 @@ void setup() {
 
 void draw() {
   PGraphics pg = stackPG.push(100, 100, P2D);
-  background(0, 0);
-  stroke(255);
+    stroke(255);
   line(0, 0, width, height);
   stackPG.pop();  
   image(pg, 0, 0);
