@@ -104,10 +104,25 @@ public class StackPGraphics {
 		PVector d = dimensionsList.remove(dimensionsList.size() - 1);
 		papplet.width = (int) d.x;
 		papplet.height = (int) d.y;
+		// FIXME: PApplet.BLEND may not be what I originally thought it was.
+		// Looking for the current blend mod, this is likely a constant.
 		int blendTemp = PApplet.BLEND;
 		papplet.blendMode(blendMode);
 		papplet.image(pgReturn, 0, 0);
 		papplet.blendMode(blendTemp);
 		return pgReturn;
 	}
+
+	// TODO: CORNER / CENTER / etc. Also, rename.
+	public void popBlendMode(int m) {
+	}	
+	// Where to place the image when popped with args
+	public PGraphics pop(int blendMode, int x, int y) {
+		return papplet.createGraphics(1, 1);
+	}
+	// Where and size
+	public PGraphics pop(int blendMode, int x, int y, int w, int h) {
+		return papplet.createGraphics(1, 1);
+	}
+	
 }
