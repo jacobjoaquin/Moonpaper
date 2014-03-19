@@ -11,7 +11,7 @@ public final class Moonpaper {
 	private PApplet papplet;
 	private ArrayList<Cel> cels;
 	private MoonCodeInterpreter interpreter;
-	private boolean isRoot;
+//	private boolean isRoot;
 
 	public Moonpaper(PApplet pApplet_) {
 		papplet = pApplet_;

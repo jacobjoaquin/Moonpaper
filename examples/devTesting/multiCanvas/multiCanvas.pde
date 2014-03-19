@@ -1,14 +1,14 @@
 import moonpaper.*;
-
-Moonpaper controller;
-Canvas canvas0;
-Canvas canvas1;
+=
+Moonpaper moonpaper;
+Cel cel0;
+Cel cel1;
 
 void setup() {
   size(500, 500);
-  controller = new Moonpaper(this);
-  canvas0 = controller.createCanvas();
-  canvas1 = controller.createCanvas();
+  moonpaper = new Moonpaper(this);
+  cel0 = moonpaper.createCel();
+  cel1 = moonpaper.createCel();
   
   PVector v1 = PVector.random2D();
   PVector v2 = PVector.random2D();
@@ -19,11 +19,11 @@ void setup() {
   Bouncy b2 = new Bouncy(new PVector(50, 50), v2, 3);
   b1.c = color(255, 0, 0);
   b2.c = color(0, 0, 255);
-  canvas0.add(b1);
-  canvas1.add(b2);
+  cel0.add(b1);
+  cel1.add(b2);
 }
 
 void draw() {
-  controller.update();
-  controller.display();
+  moonpaper.update();
+  moonpaper.display();
 }

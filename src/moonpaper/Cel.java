@@ -28,9 +28,8 @@ public class Cel extends Displayable {
 	@Override
 	public void update() {
 		if (isActiveState) {
-//			pg.clear();
-			stackPG.push(pg);
 			pg.clear();
+			stackPG.push(pg);
 			for (Displayable d : displayables) {
 				papplet.blendMode(d.getBlendMode());
 				d.update();
@@ -50,7 +49,6 @@ public class Cel extends Displayable {
 	@Override
 	public void display() {
 		if (isActiveState) {
-			pg.clear();
 			stackPG.push(pg);
 			for (Displayable d : displayables) {
 				papplet.blendMode(d.getBlendMode());
