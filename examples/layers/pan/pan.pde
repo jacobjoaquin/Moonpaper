@@ -7,9 +7,9 @@ int velocity = 4;
 
 void drawSomeCircles(int nCircles, float size) {
   colorMode(HSB);
-  noStroke();
   rectMode(CENTER);
   blendMode(ADD);
+  noStroke();
   for (int i = 0; i < nCircles; i++) {
     fill(random(32), 255, 255, 48);
     ellipse(random(width), random(height), size, size);
