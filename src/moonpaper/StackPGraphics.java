@@ -40,14 +40,14 @@ public class StackPGraphics {
 	}
 
 	public PGraphics push() {
-		// TODO: Should copy currenet render type.
+		// TODO: Should copy current render type.
 		PGraphics pg = papplet.createGraphics(papplet.width, papplet.height);
 		pg.clear();
 		return push(pg);
 	}
 
 	public PGraphics push(int w, int h) {
-		// TODO: Should copy currenet render type.
+		// TODO: Should copy current render type.
 		PGraphics pg = papplet.createGraphics(w, h);
 		pg.clear();
 		return push(pg);
@@ -70,7 +70,7 @@ public class StackPGraphics {
 	}
 
 	public PGraphics pushCopy() {
-		// TODO: Should copy currenet render type.
+		// TODO: Should copy current render type.
 		PGraphics pgCopy = papplet
 				.createGraphics(papplet.width, papplet.height);
 		pgCopy.clear();
@@ -80,7 +80,7 @@ public class StackPGraphics {
 	}
 
 	public PGraphics pushCopy(PGraphics pg) {
-		// TODO: Should copy currenet render type.
+		// TODO: Should copy current render type.
 		PGraphics pgCopy = papplet.createGraphics(pg.width, pg.height);
 		pgCopy.clear();
 		pgCopy.copy(pg, 0, 0, pg.width, pg.height, 0, 0, pg.width, pg.height);
@@ -114,15 +114,11 @@ public class StackPGraphics {
 	}
 
 	// TODO: CORNER / CENTER / etc. Also, rename.
-	public void popBlendMode(int m) {
-	}	
-	// Where to place the image when popped with args
-	public PGraphics pop(int blendMode, int x, int y) {
-		return papplet.createGraphics(1, 1);
-	}
-	// Where and size
-	public PGraphics pop(int blendMode, int x, int y, int w, int h) {
-		return papplet.createGraphics(1, 1);
-	}
-	
+	/*
+	 * public void popBlendMode(int m) { } // Where to place the image when
+	 * popped with args public PGraphics pop(int blendMode, int x, int y) {
+	 * return papplet.createGraphics(1, 1); } // Where and size public PGraphics
+	 * pop(int blendMode, int x, int y, int w, int h) { return
+	 * papplet.createGraphics(1, 1); }
+	 */
 }
