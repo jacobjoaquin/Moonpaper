@@ -5,7 +5,7 @@ int circleSize = 100;
 Cel cel;
 
 void setup() {
-  size(500, 500, P2D);
+  size(500, 500);
   cel = new Cel(this, width, height);
   
   for (int i = 0; i < nCircles; i++) {
@@ -16,9 +16,7 @@ void setup() {
   }
   
   cel.add(new Mirror());
-  Sparkle sparkle = new Sparkle();
-  sparkle.setClearOnDisplay(true);
-  cel.add(sparkle);
+  cel.add(new Sparkle());
 }
 
 void draw() {

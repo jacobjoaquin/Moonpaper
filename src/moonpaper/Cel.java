@@ -31,7 +31,6 @@ public class Cel extends Displayable {
 			pg.clear();
 			stackPG.push(pg);
 			for (Displayable d : displayables) {
-				papplet.blendMode(d.getBlendMode());
 				d.update();
 
 				// TODO: I don't like this. Do something about it.
@@ -51,11 +50,12 @@ public class Cel extends Displayable {
 		if (isActiveState) {
 			stackPG.push(pg);
 			for (Displayable d : displayables) {
+//				PApplet.println(papplet.frameCount + ", " + d);
 				papplet.blendMode(d.getBlendMode());
 				d.display();
+				papplet.blendMode(PApplet.BLEND);
 			}
-			stackPG.pop();
-			papplet.image(pg, 0, 0);
+			stackPG.pop(PApplet.BLEND);
 		}
 	}
 
