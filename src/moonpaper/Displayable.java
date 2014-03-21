@@ -5,7 +5,7 @@ import processing.core.PApplet;
 public abstract class Displayable {
 	protected StackPGraphics stackPG;
 	private int blendMode = PApplet.BLEND;
-	private Patchable<Integer> theTint = new Patchable<Integer>(255);;
+//	private Patchable<Integer> theTint = new Patchable<Integer>(255);;
 
 	public void init() {
 	};
@@ -31,11 +31,11 @@ public abstract class Displayable {
 		stackPG = stackPG_;
 	}
 	
-	public final Patchable<Integer> getTint() {
-		return theTint;
-	}
-	
-	public final void setTint(int t) {
-		theTint = new Patchable<Integer>(t);
-	}
+//	public final Patchable<Integer> getTint() {
+//		return theTint;
+//	}
+//	
+//	public final void setTint(int t) {
+//		theTint = new Patchable<Integer>(t);
+//	}
 }

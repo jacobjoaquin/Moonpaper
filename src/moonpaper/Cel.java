@@ -1,6 +1,7 @@
 package moonpaper;
 
 import java.util.ArrayList;
+
 import processing.core.PGraphics;
 import processing.core.PApplet;
 
@@ -10,6 +11,7 @@ public class Cel extends Displayable {
 	private PApplet papplet;
 	private StackPGraphics stackPG;
 	private boolean isActiveState = true;
+	private Patchable<Float> transparency = new Patchable<Float>(255.0f);
 
 	public Cel(PApplet parent_) {
 		papplet = parent_;
@@ -47,15 +49,20 @@ public class Cel extends Displayable {
 
 	@Override
 	public void display() {
-		if (isActiveState) {
+		if (isActiveState && transparency.value() >= 1.0) {
 			stackPG.push(pg);
 			for (Displayable d : displayables) {
-//				PApplet.println(papplet.frameCount + ", " + d);
 				papplet.blendMode(d.getBlendMode());
 				d.display();
 				papplet.blendMode(PApplet.BLEND);
 			}
-			stackPG.pop(PApplet.BLEND);
+			stackPG.pop();
+			if (transparency.value() <= 254.0) {
+				papplet.tint(255, transparency.value());
+			} else {
+				papplet.noTint();
+			}
+			papplet.image(pg, 0, 0);
 		}
 	}
 
@@ -67,6 +74,13 @@ public class Cel extends Displayable {
 		displayables.add(d);
 	}
 
+	public void removeLast() {
+		int size = displayables.size(); 
+		if (size > 0) {
+			displayables.remove(size - 1);
+		}
+	}
+	
 	public void setActive(boolean isActiveState_) {
 		isActiveState = isActiveState_;
 	}
@@ -77,5 +91,13 @@ public class Cel extends Displayable {
 
 	public void clear() {
 		displayables.clear();
+	}
+
+	public final Patchable<Float> getTransparency() {
+		return transparency;
+	}
+
+	public final void setTransparency(float f) {
+		transparency = new Patchable<Float>(f);
 	}
 }
