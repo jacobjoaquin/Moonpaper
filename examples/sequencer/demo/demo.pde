@@ -34,16 +34,14 @@ void setup() {
   }
   
   mp.seq(new Wait(60));
-  mp.seq(new Line(120, cel0.getTransparency(), 0));
-  mp.seq(new Wait(120));
+  mp.seq(new FadeOut(120, cel0));
   mp.seq(new PushCel(cel0, new Mirror()));
-  mp.seq(new Line(120, cel0.getTransparency(), 255));
-  mp.seq(new Wait(250));
+  mp.seq(new FadeIn(120, cel0));
 
-  nDots = 8;
+  nDots = 16;
   for (int i = 0; i < nDots; i++) {
     color c = color(map(i, 0, nDots, 0, 255), 255, 255);
-    PImage dot = makeDot(100, 7, c);
+    PImage dot = makeDot(50, 7, c);
     PVector startLocation = new PVector(map(i, 0, nDots - 1, 0, width), map(i, 0, nDots - 1, 0, height));
     PVector velocity = PVector.mult(PVector.fromAngle((i % 2) * PI), 4);
     MovingImage m = new MovingImage(dot, startLocation, velocity);
@@ -59,7 +57,7 @@ void setup() {
 }
 
 void draw() {
-  println(frameRate);
+//  println(frameRate);
   background(0);
   mp.update();
   mp.display();
