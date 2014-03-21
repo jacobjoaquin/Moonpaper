@@ -32,5 +32,6 @@ class MovingImage extends Displayable {
   void display() {
     imageMode(CENTER);
     image(img, location.x, location.y);
+    imageMode(CORNER);
   }
 }
