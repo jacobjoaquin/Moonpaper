@@ -1,4 +1,4 @@
-import moonpaper.*;
+200  import moonpaper.*;
 import moonpaper.opcodes.*;
 
 Moonpaper mp;
@@ -43,7 +43,7 @@ void setup() {
   // Pre-render 8 small dots and add them to cel1
   nDots = 8;
   for (int i = 0; i < nDots; i++) {
-    color c = color(map(i, 0, nDots, 0, 255), 255, 255);
+    color c = color(map(i, 0, nDots, 128, 180), 255, 255);
     PImage dot = makeDot(100, 7, c);
     PVector startLocation = new PVector(map(i, 0, nDots - 1, 0, width), map(i, 0, nDots - 1, 0, height));
     PVector velocity = PVector.mult(PVector.fromAngle((i % 2) * PI + QUARTER_PI / 2), map(i, 0, nDots, 1, 4));
