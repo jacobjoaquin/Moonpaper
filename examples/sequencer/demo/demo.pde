@@ -1,4 +1,4 @@
-200  import moonpaper.*;
+import moonpaper.*;
 import moonpaper.opcodes.*;
 
 Moonpaper mp;
