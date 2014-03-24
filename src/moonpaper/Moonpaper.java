@@ -11,7 +11,8 @@ public final class Moonpaper {
 	private PApplet papplet;
 	private ArrayList<Cel> cels;
 	private MoonCodeInterpreter interpreter;
-//	private boolean isRoot;
+
+	// private boolean isRoot;
 
 	public Moonpaper(PApplet pApplet_) {
 		papplet = pApplet_;
@@ -26,11 +27,6 @@ public final class Moonpaper {
 	 */
 	public static String version() {
 		return VERSION;
-	}
-
-	public void addMoonpaper(Moonpaper newMoon) {
-		// A moonpaper object can be controlled by another moonpaper object. In
-		// essence, it's like adding a setlist.
 	}
 
 	public Cel createCel() {
@@ -60,10 +56,45 @@ public final class Moonpaper {
 		interpreter.add(mooncode);
 	}
 
+	public void seq(Moonpaper mp) {
+		// The complex way.
+		// Should act like a stack.
+		// Master pointer is passed into this sub-moonpaper object.
+		// All parent actions are paused / disabled. ???
+		//
+	}
+
+	public void seqCopy(Moonpaper mp) {
+		// The simple way.
+		for (MoonCode mc : interpreter.getMoonCodes()) {
+			interpreter.add(mc);
+		}
+	}
+
 	public void update() {
 		interpreter.update();
+		// updateT();
 		for (Cel c : cels) {
 			c.update();
+		}
+	}
+
+	private void updateT() {
+		// FIXME: This implementation certainly doesn't work, but it something
+		// like this could with the right graphing mechanisms in place.
+		ArrayList<Thread> threads = new ArrayList<Thread>();
+
+		for (Cel c : cels) {
+			Thread celThread = new Thread(c);
+			celThread.start();
+			threads.add(celThread);
+		}
+
+		for (Thread t : threads) {
+			try {
+				t.join();
+			} catch (InterruptedException e) {
+			}
 		}
 	}
 

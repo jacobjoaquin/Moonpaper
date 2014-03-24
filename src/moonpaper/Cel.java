@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import processing.core.PGraphics;
 import processing.core.PApplet;
 
-public class Cel extends Displayable {
+public class Cel extends Displayable implements Runnable {
 	public PGraphics pg;
 	private ArrayList<Displayable> displayables;
 	private PApplet papplet;
@@ -27,6 +27,10 @@ public class Cel extends Displayable {
 		displayables = new ArrayList<Displayable>();
 	}
 
+	public void run() {
+		update();
+	}
+	
 	@Override
 	public void update() {
 		if (isActiveState) {

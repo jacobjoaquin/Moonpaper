@@ -7,7 +7,7 @@ import moonpaper.Moonpaper;
 
 public final class MoonCodeInterpreter {
 	private Moonpaper controller;
-	private ArrayList<MoonCode> mooncodes;
+	ArrayList<MoonCode> mooncodes;
 	private ArrayList<MoonCodeGenerator> generators;
 	private Iterator<MoonCode> iterator;
 	private MoonCode currentMooncode;
@@ -24,6 +24,10 @@ public final class MoonCodeInterpreter {
 		mooncodes.add(mooncode);
 	}
 
+	public ArrayList<MoonCode> getMoonCodes() {
+		return mooncodes;
+	}
+	
 	private void next() {
 		if (!iterator.hasNext()) {
 			iterator = mooncodes.iterator();
