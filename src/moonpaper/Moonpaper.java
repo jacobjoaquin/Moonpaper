@@ -73,15 +73,17 @@ public final class Moonpaper {
 
 	public void update() {
 		interpreter.update();
-		// updateT();
-		for (Cel c : cels) {
-			c.update();
-		}
+		updateT();
+		// for (Cel c : cels) {
+		// c.update();
+		// }
 	}
 
 	private void updateT() {
 		// FIXME: This implementation certainly doesn't work, but it something
 		// like this could with the right graphing mechanisms in place.
+		// Most likely this is due to the share StackPGraphics. Looks like
+		// StackPGraphics is out.
 		ArrayList<Thread> threads = new ArrayList<Thread>();
 
 		for (Cel c : cels) {
@@ -90,11 +92,11 @@ public final class Moonpaper {
 			threads.add(celThread);
 		}
 
-		for (Thread t : threads) {
-			try {
+		try {
+			for (Thread t : threads) {
 				t.join();
-			} catch (InterruptedException e) {
 			}
+		} catch (InterruptedException e) {
 		}
 	}
 
