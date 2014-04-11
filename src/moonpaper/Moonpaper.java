@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import moonpaper.opcodes.*;
 import processing.core.PApplet;
+import processing.core.PGraphics;
 
 public final class Moonpaper {
 	public final static String VERSION = "##library.prettyVersion##";
@@ -73,10 +74,10 @@ public final class Moonpaper {
 
 	public void update() {
 		interpreter.update();
-		updateT();
-		// for (Cel c : cels) {
-		// c.update();
-		// }
+//		updateT();
+		 for (Cel c : cels) {
+		 c.update();
+		 }
 	}
 
 	private void updateT() {

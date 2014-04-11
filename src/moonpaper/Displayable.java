@@ -1,10 +1,12 @@
 package moonpaper;
 
 import processing.core.PApplet;
+import processing.core.PGraphics;
 
 public abstract class Displayable {
-	protected StackPGraphics stackPG;
+//	protected StackPGraphics stackPG;
 	private int blendMode = PApplet.BLEND;
+	protected PGraphics pg;
 //	private Patchable<Integer> theTint = new Patchable<Integer>(255);;
 
 	public void init() {
@@ -27,8 +29,12 @@ public abstract class Displayable {
 		return blendMode;
 	}
 
+	public final void setPGraphics(PGraphics pg_) {
+		pg = pg_;
+	}
+	
 	public final void setStackPGraphics(StackPGraphics stackPG_) {
-		stackPG = stackPG_;
+//		stackPG = stackPG_;
 	}
 	
 //	public final Patchable<Integer> getTint() {

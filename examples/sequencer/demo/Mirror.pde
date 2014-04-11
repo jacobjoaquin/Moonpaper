@@ -1,15 +1,15 @@
 class Mirror extends Displayable {
   void display() {
-    int halfWidth = width / 2;
-    int wMinus1 = height - 1;
+    int halfWidth = pg.width / 2;
+    int wMinus1 = pg.height - 1;
     
-    loadPixels();
+    pg.loadPixels();
     for (int i = 0; i < halfWidth; i++) {
-      for (int j = 0; j < height; j++) {
-        int offset = j * width;
-        pixels[wMinus1 - i + offset] = pixels[i + offset];
+      for (int j = 0; j < pg.height; j++) {
+        int offset = j * pg.width;
+        pg.pixels[wMinus1 - i + offset] = pg.pixels[i + offset];
       }
     }
-    updatePixels();    
+    pg.updatePixels();    
   }
 }

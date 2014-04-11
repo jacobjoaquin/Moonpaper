@@ -1,5 +1,5 @@
 class SetBackground extends Displayable {
   void display() {
-    background(0);
+    pg.background(0);
   }
 }

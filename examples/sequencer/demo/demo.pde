@@ -6,7 +6,8 @@ StackPGraphics stackpg;
 PGraphics img;
 
 void setup() {
-  size(200, 200);
+  size(200, 200, P2D);
+  frameRate(1000);
   mp = new Moonpaper(this);
   stackpg = new StackPGraphics(this);  
   Cel cel0 = mp.createCel();
@@ -65,8 +66,13 @@ void setup() {
 }
 
 void draw() {
+  noLoop();
+  println("foo");
+  println(frameRate);
   background(0);
   mp.update();
+  /*
   mp.display();
+  */
 }
 

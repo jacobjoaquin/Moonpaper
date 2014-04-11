@@ -9,21 +9,22 @@ public class Cel extends Displayable implements Runnable {
 	public PGraphics pg;
 	private ArrayList<Displayable> displayables;
 	private PApplet papplet;
-	private StackPGraphics stackPG;
+//	private StackPGraphics stackPG;
 	private boolean isActiveState = true;
 	private Patchable<Float> transparency = new Patchable<Float>(255.0f);
 
 	public Cel(PApplet parent_) {
 		papplet = parent_;
-		pg = papplet.createGraphics(papplet.width, papplet.height);
-		stackPG = new StackPGraphics(papplet);
+		pg = papplet.createGraphics(papplet.width, papplet.height, PApplet.P2D);
+//		PApplet.println(papplet.width);
+//		stackPG = new StackPGraphics(papplet);
 		displayables = new ArrayList<Displayable>();
 	}
 
 	public Cel(PApplet parent_, int width, int height) {
 		papplet = parent_;
-		pg = papplet.createGraphics(width, height);
-		stackPG = new StackPGraphics(papplet);
+		pg = papplet.createGraphics(width, height, PApplet.P2D);
+//		stackPG = new StackPGraphics(papplet);
 		displayables = new ArrayList<Displayable>();
 	}
 
@@ -34,33 +35,36 @@ public class Cel extends Displayable implements Runnable {
 	@Override
 	public void update() {
 		if (isActiveState) {
-			pg.clear();
-			stackPG.push(pg);
-			for (Displayable d : displayables) {
-				d.update();
-
-				// TODO: I don't like this. Do something about it.
-				if (d instanceof Filter) {
-					Filter f = (Filter) d;
-					if (f.getClearOnDisplay()) {
-						pg.clear();
-					}
-				}
-			}
-			stackPG.pop();
+			PGraphics pgx = papplet.createGraphics(500, 500, PApplet.P2D);
+			PApplet.println("update: " + papplet.width);
+			PApplet.println("pgx: " + pgx.width);
+			pgx.beginDraw();
+//			pg.clear();
+//			for (Displayable d : displayables) {
+//				d.update();
+//
+//				// TODO: I don't like this. Do something about it.
+//				if (d instanceof Filter) {
+//					Filter f = (Filter) d;
+//					if (f.getClearOnDisplay()) {
+//						pg.clear();
+//					}
+//				}
+//			}
+			pgx.endDraw();
 		}
 	}
 
 	@Override
 	public void display() {
 		if (isActiveState && transparency.value() >= 1.0) {
-			stackPG.push(pg);
+			pg.beginDraw();
 			for (Displayable d : displayables) {
-				papplet.blendMode(d.getBlendMode());
+				pg.blendMode(d.getBlendMode());
 				d.display();
-				papplet.blendMode(PApplet.BLEND);
+				pg.blendMode(PApplet.BLEND);
 			}
-			stackPG.pop();
+			pg.endDraw();
 			if (transparency.value() <= 254.0) {
 				papplet.tint(255, transparency.value());
 			} else {
@@ -71,10 +75,8 @@ public class Cel extends Displayable implements Runnable {
 	}
 
 	public void add(Displayable d) {
-		stackPG.push(pg);
-		d.setStackPGraphics(stackPG);
+		d.setPGraphics(pg);
 		d.init();
-		stackPG.pop();
 		displayables.add(d);
 	}
 

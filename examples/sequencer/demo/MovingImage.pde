@@ -30,8 +30,8 @@ class MovingImage extends Displayable {
   }
   
   void display() {
-    imageMode(CENTER);
-    image(img, location.x, location.y);
-    imageMode(CORNER);
+    pg.imageMode(CENTER);
+    pg.image(img, location.x, location.y);
+    pg.imageMode(CORNER);
   }
 }
