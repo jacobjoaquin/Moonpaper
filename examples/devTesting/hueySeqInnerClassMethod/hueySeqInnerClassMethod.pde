@@ -34,6 +34,10 @@ class Huey extends Displayable {
     background(hue.value(), 255, 255);
     popStyle();
   }
+  
+  MoonCodeEvent randomValue(float low, float high) {    
+    return new RandomValue(low, high);
+  }
 }
 
 
