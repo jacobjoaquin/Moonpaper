@@ -25,9 +25,6 @@ class Huey extends Displayable {
     hue = new Patchable<Float>(0.0);
   }
 
-  void update() {
-  }
-
   void display() {
     pushStyle();
     colorMode(HSB);
@@ -42,6 +39,7 @@ class Huey extends Displayable {
 
 
 void setup() {
+  size(200, 200, P2D);
   mp = new Moonpaper(this);
   Cel cel = mp.createCel();
   Huey h = new Huey();
@@ -49,7 +47,7 @@ void setup() {
   mp.seq(new ClearCels());
   mp.seq(new PushCel(cel, h));  
   mp.seq(new Wait(10));
-  mp.seq(h.new RandomValue(0, 255));
+  mp.seq(h.randomValue(0, 255));
 }
 
 void draw() {
